@@ -4,16 +4,15 @@ import Store from "./store.js";
 const DomTracker = (function () {
    const targetNode = document;
    const config = { attributes: true, childList: true, subtree: true };
-   const callback = function (mutationsList, observer) {
+   const callback = function (mutationsList) {
       for (let mutation of mutationsList) {
-         const result = {
+         Store.get('sessionRecording').push({
             tracker: 'dom',
             type: mutation.type,
             xpath: DOM.getXpath(mutation.target),
-            dom: DOM.returnElementObject(mutation.target),
+            el: DOM.returnEL(mutation.target),
             _ts: new Date().getTime() - Store.get('_TS')
-         }
-         Store.get('sessionRecording').push(result)
+         })
       }
    };
    const observer = new MutationObserver(callback);

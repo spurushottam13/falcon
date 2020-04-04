@@ -15,13 +15,13 @@ const DOM = (function () {
             }
         },
         getElementByXpath: (xpath) => document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue,
-        returnElementObject: function(ele){
+        returnEL: function(ele){
             const haveChild = (ele) => !!ele.childNodes.length
             const getAttributes = (ele) => ele.getAttributeNames ? ele.getAttributeNames().map(i => ({ [i]: ele.getAttribute(i) })) : []
             return {
                 type: ele.nodeName,
                 props: getAttributes(ele),
-                children: haveChild(ele) ? Array.from(ele.childNodes).map(i => this.returnElementObject(i)) : ele.nodeType === Node.TEXT_NODE ? ele.nodeValue : ele.innerHTML
+                children: haveChild(ele) ? Array.from(ele.childNodes).map(i => this.returnEL(i)) : ele.nodeType === Node.TEXT_NODE ? ele.nodeValue : ele.innerHTML
             }
         },
         returnElement: function({ type, props, children }){
