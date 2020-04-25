@@ -2,7 +2,7 @@ import Store from "./store.js"
 
 const ScrollTracker = (function () {
     function scrollEventhandler() {
-        Store.get('sessionRecording').push({
+        Store.get('beacon')({
             tracker: 'scroll',
             type: 'scroll',
             _ts: new Date().getTime() - Store.get('_TS'),

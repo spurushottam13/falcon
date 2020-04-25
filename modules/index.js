@@ -6,17 +6,25 @@ import ClickTracker from "./clickTracker.js"
 
 const Falcon = (function(){
     return {
-        store: Store,
+        init: function({beacon}){
+          if(!beacon) throw new Error('[Falcon.js] (init) : beacon is required prop')
+          Store.add('beacon', beacon)
+        },
         start:function(){
+          if(!Store.get('beacon')) throw new Error('[Falcon.js] (start) : start method called without init')
           Store.add('_TS', new Date().getTime())
           Store.add('sessionRecording', [])
-          Store.add('heatmap.click', [])
           DomTracker.start()
           ScrollTracker.start()
           ClickTracker.start()
         },
-        render: RenderEngine.start
+        stopAllTracker: RenderEngine.stopAllTracker,
+        renderEngine: RenderEngine
     }
 })()
 
-window.Falcon = Falcon
+export default Falcon
+
+if(!window.Falcon){
+  window.Falcon = Falcon
+}

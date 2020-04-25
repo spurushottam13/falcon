@@ -6,7 +6,7 @@ const DomTracker = (function () {
    const config = { attributes: true, childList: true, subtree: true };
    const callback = function (mutationsList) {
       for (let mutation of mutationsList) {
-         Store.get('sessionRecording').push({
+         Store.get('beacon')({
             tracker: 'dom',
             type: mutation.type,
             xpath: DOM.getXpath(mutation.target),

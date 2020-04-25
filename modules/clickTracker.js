@@ -10,8 +10,7 @@ const ClickTracker = (function(){
             el : DOM.returnEL(event.target),
             _ts: new Date().getTime() - Store.get('_TS')
         }
-        Store.get('sessionRecording').push(data)
-        Store.get('heatmap.click').push(data)
+        Store.get('beacon')(data)
     }
     return {
         start: Store.add('clickTracker.start', _ => window.addEventListener('click', clickEventHandler)),
