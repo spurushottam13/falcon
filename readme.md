@@ -7,8 +7,9 @@
     ```import Falcon from "./src/index.js.js";```
     * Initate the Lib.   
         ```
-            Falcon.init({
+        Falcon.init({
             beacon: customBeacon
+        })
         ```    
         beacon will recive stream of data, developer has to store the data in thier backend in array or in sequnce, which will be used by the render Engine to render the session recording.   
     * Start session recording
@@ -17,7 +18,7 @@
         ```
 * Steps: - To render recording.   
     RenderEngine requires in website dom. it can only render inside the loaded website.  
-    * Add/Import the Falcon in the recorded website.
+    * Add/Import the Falcon in the recorded website.   
     ```import Falcon from "./src/index.js.js";```
     * Play.   
         ```
