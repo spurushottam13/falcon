@@ -1,4 +1,4 @@
-import Falcon from "./modules/index.js";
+import Falcon from "./src/index.js.js";
 
 // Custom temp store to save data and later we use for render
 // Ideally it will be sent to backend to store thier with userId
