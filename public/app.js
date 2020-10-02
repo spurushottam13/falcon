@@ -8,7 +8,7 @@ window.customStore = []
 Falcon.init({
     // Beacon will recive the data with timestamp and it 
     // his duty to push the data in store in order they are recived.
-    beacon: data => console.log(data) && window.customStore.push(data)
+    beacon: data => window.customStore.push(data)
 })
 
 // for demo we will calling below method from console
